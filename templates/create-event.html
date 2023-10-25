@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/create-event.css">
+    <title>انشاء حدث</title>
+    <link rel="stylesheet" href="{% static 'css/create-event.css' %}">
 </head>
 <body>
     
@@ -15,10 +16,10 @@
     <div class="content">
 
         
-        <div class="container">
-
+        <form method="POST" enctype="multipart/form-data" class="container">
+            {% csrf_token %}
             <div class="images">
-                <button id="imgBtn">اضف صورة</button>
+                <button type="button" id="imgBtn">اضف صورة</button>
                 <input type="file" hidden id="imgFile">
                 <div class="img-inputs"></div>
                 <div class="img-cont">
@@ -33,14 +34,14 @@
             
             <div class="in">
                 <p>تاريخ بدأ الحدث</p>
-                <input type="date" name="event_name">
+                <input type="date" name="start_at">
             </div>
 
-            <button class="done-btn">
+            <button class="done-btn" type="submit">
                 انشاء الحدث
             </button>
 
-        </div>
+        </form>
         
     
 
@@ -69,7 +70,7 @@
             input.setAttribute('type','file')
             input.setAttribute('name','img')
             input.setAttribute('hidden','')
-            input.filename = e.target.files[0]
+            input.files = e.target.files
 
             
             
