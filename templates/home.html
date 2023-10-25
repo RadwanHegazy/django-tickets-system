@@ -10,35 +10,20 @@
 <body>
     
     <div class="up">
-        <a href="#">انشاء حدث جديد</a>
+        <a href="{% url 'create_event' %}">انشاء حدث جديد</a>
     </div>
 
     <div class="content">
 
-        <div class="box">
-            <p>اسم الحدث</p>
-            <a href="#">تفاصيل</a>
-            <div class="date">سوف يبدأ الحدث في 22/3/2022</div>
-        </div>
         
-        <div class="box">
-            <p>اسم الحدث</p>
-            <a href="#">تفاصيل</a>
-            <div class="date">انتهي الحدث</div>
-        </div>
-
-        <div class="box">
-            <p>اسم الحدث</p>
-            <a href="#">تفاصيل</a>
-            <div class="date">سوف يبدأ الحدث في 22/3/2022</div>
-        </div>
-
-        <div class="box">
-            <p>اسم الحدث</p>
-            <a href="#">تفاصيل</a>
-            <div class="date">سوف يبدأ الحدث في 22/3/2022</div>
-        </div>
-
+        
+        {% for event in events %}
+            <div class="box">
+                <p>{{event.name}}</p>
+                <a href="{% url 'event_details' event.uuid %}">تفاصيل</a>
+                <div class="date" style="direction: rtl;">سوف يبدأ الحدث في {{event.start_at}}</div>
+            </div>
+        {% endfor %}
 
     </div>
 

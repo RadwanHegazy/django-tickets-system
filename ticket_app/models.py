@@ -20,6 +20,7 @@ class Visitor (models.Model) :
     phone = models.CharField(max_length=20)
     uuid = models.UUIDField(null=True,blank=True)
     is_arrived = models.BooleanField(default=False)
+    register_at = models.DateField(auto_now_add=True)
     event = models.ForeignKey(Event,on_delete=models.CASCADE)
 
     def __str__(self) : 

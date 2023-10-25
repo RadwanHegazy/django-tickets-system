@@ -1,15 +1,16 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Visitor Register </title>
-    <link rel="stylesheet" href="css/visitor-register.css">
+    <title> تسجيل في الحدث | {{event.name}} </title>
+    <link rel="stylesheet" href="{% static 'css/visitor-register.css' %}">
 </head>
 <body>
     
     <div class="up">
-        <h1>اسم الحدث هنا</h1>
+        <h1>{{event.name}}</h1>
     </div>
 
     
@@ -29,11 +30,12 @@
 
 
             
-            <div class="right">
+            <form method="POST" enctype="multipart/form-data" class="right">
 
+                {% csrf_token %}
                 <div class="profile-pic">
-                    <input type="file" hidden id="imgFile">
-                    <img src="images/bg.png" alt="" id="img">
+                    <input name="img" type="file" hidden id="imgFile">
+                    <img alt="" id="img">
                     <button type="button" id="imgBtn">ارفع صورتك الشخصية</button>
                 </div>
 
@@ -41,7 +43,7 @@
 
                 <div class="in">
                     <p>اسمك بالكامل</p>
-                    <input type="email" name="email">
+                    <input type="text" name="full_name">
                 </div>
 
                 <div class="in">
@@ -51,13 +53,13 @@
                 
                 <div class="in">
                     <p>رقم الهاتف</p>
-                    <input type="email" name="email">
+                    <input type="text" name="phone">
                 </div>
 
-                <button class="done-btn">تسجيل</button>
+                <button class="done-btn" type="submit">تسجيل</button>
 
 
-            </div>
+            </form>
 
         </div>
 
@@ -87,7 +89,7 @@
         var next = document.getElementById('next-btn');
         var prev = document.getElementById('prev-btn');
         
-        var images = ['images/bg.png','images/myqr.png'];
+        var images = "{{images}}".split('@');
 
         let currnet_img_index = 0;
         var event_img = document.querySelector('.left img');
