@@ -1,0 +1,145 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+:root{
+    --var-font:"Cairo",sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color:#103050 ;
+}
+
+body .up {
+    width: 100%;
+    height: 150px;
+    background-color:#13569A ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.up button {
+    direction: rtl;
+    width: 100px;
+    height: 45px;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    font-family: var(--var-font);
+    font-weight: bold;
+
+}
+body .content {
+    width: 100%;
+    min-height: 50vh;
+    height: auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding-top: 100px;
+    position: relative;
+    
+}
+
+
+#scanner {
+    width: 400px;
+    height: 90%;
+    background-color: #103050;
+    z-index: 10;
+}
+
+.content .event-name {
+    font-family: var(--var-font);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    color: #fff;
+    z-index: -1;
+    text-shadow: 0px 0px 30px #ffffff70;
+}
+
+.content .user {
+    width: 300px;
+    border-radius: 40px;
+    padding: 20px 30px;
+    overflow: hidden;
+    height: 400px;
+    background-color: #13569A;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content .user img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+.in {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--var-font);
+    direction: rtl;
+}
+
+.in p {
+    color: #999;
+    font-weight: bold;
+}
+
+.in input {
+    height: 55px;
+    border: none;
+    outline: none;
+    padding: 7px 14px;
+    background-color: #00000030;
+    color: #fff;
+}
+
+
+.state {
+    display: flex;
+    flex-direction: row;
+    font-family: var(--var-font);
+    color: #fff;
+}
+
+.state .attend {
+    font-weight: bold;
+}
+
+.attend.yes {
+    color: rgb(21, 210, 21);
+    text-shadow: 0px 0px 30px rgba(21, 210, 21, 0.791);
+}
+
+.attend.no {
+    color: rgb(220, 20, 60);
+    text-shadow: 0px 0px 30px rgba(220, 20, 60, 0.791);
+
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Visitor Register </title>
+    <link rel="stylesheet" href="css/visitor-register.css">
+</head>
+<body>
+    
+    <div class="up">
+        <h1>اسم الحدث هنا</h1>
+    </div>
+
+    
+    
+    <div class="content">
+
+
+
+        <div class="container">
+
+            <div class="left">
+                <!-- <img src="images/bg.png" alt=""> -->
+                <img src="" alt="">
+                <button id="next-btn" class="next">التالي</button>
+                <button id="prev-btn" class="prev">السابق</button>
+            </div>
+
+
+            
+            <div class="right">
+
+                <div class="profile-pic">
+                    <input type="file" hidden id="imgFile">
+                    <img src="images/bg.png" alt="" id="img">
+                    <button type="button" id="imgBtn">ارفع صورتك الشخصية</button>
+                </div>
+
+
+
+                <div class="in">
+                    <p>اسمك بالكامل</p>
+                    <input type="email" name="email">
+                </div>
+
+                <div class="in">
+                    <p>البريد الالكتروني</p>
+                    <input type="email" name="email">
+                </div>
+                
+                <div class="in">
+                    <p>رقم الهاتف</p>
+                    <input type="email" name="email">
+                </div>
+
+                <button class="done-btn">تسجيل</button>
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+    
+    <script>
+
+        // for change visitor images
+        var imgFile = document.getElementById('imgFile');
+        var img = document.getElementById('img');
+        var imgBtn = document.getElementById('imgBtn');
+
+        imgBtn.addEventListener('click',()=>{
+            imgFile.click()
+        })
+
+        imgFile.addEventListener('change',(e)=>{
+
+            var src = URL.createObjectURL(e.target.files[0]);
+            img.src = src;
+        })
+
+
+
+        var next = document.getElementById('next-btn');
+        var prev = document.getElementById('prev-btn');
+        
+        var images = ['images/bg.png','images/myqr.png'];
+
+        let currnet_img_index = 0;
+        var event_img = document.querySelector('.left img');
+
+        function UpdateImg (){
+
+            event_img.src = images[currnet_img_index]
+        }
+
+        UpdateImg()
+
+        next.addEventListener('click',()=>{
+
+            if (currnet_img_index < images.length -1 ){
+                currnet_img_index++
+                UpdateImg()
+            }
+        })
+
+        prev.addEventListener('click',()=>{
+
+            if (currnet_img_index > 0 ){
+                currnet_img_index--
+                UpdateImg()
+            }
+        })
+
+
+
+
+    </script>
+
+</body>
+</html>

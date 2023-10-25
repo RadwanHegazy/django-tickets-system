@@ -1,0 +1,174 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+:root{
+    --var-font:"Cairo",sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color:#103050 ;
+}
+
+body .up {
+    width: 100%;
+    height: 20%;
+    background-color:#13569A ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+
+
+body .content {
+    width: 100%;
+    min-height: 80%;
+    height: auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    position: relative;    
+}
+
+.up h1 {
+    font-family: var(--var-font);
+    color: #fff;
+    font-size: 2.4rem;
+    text-shadow: 0px 0px 30px #ffffff70;
+}
+
+
+.content .container {
+    width: 800px;
+    height: 500px;
+    background-color: #123F6D;
+    padding: 12px;
+    display: flex;
+
+}
+
+.container div {
+    flex: 1;
+}
+
+.container .right {
+    padding: 10px;
+}
+.container .left {
+    position: relative;
+    background-color: #11477F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.container .left img {
+    width: 100%;
+    height: auto;
+}
+
+.left button {
+    position: absolute;
+    width: 100px;
+    height: 45px;
+    border-radius: 100px;
+    top: 10px;
+    border: none;
+    outline: none;
+    font-family: var(--var-font);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.left button.next {
+    right: 10px;
+}
+.left button.prev {
+    left: 10px;
+}
+
+
+.profile-pic {
+    overflow: hidden;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-pic img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: contain;
+    background-color: #103050;
+    padding: 1px;
+}
+
+.profile-pic button {
+    padding: 6px 12px;
+    font-family: var(--var-font);
+    border-radius: 100px;
+    border: none;
+    outline: none;
+    background-color: #13569A;
+    color: #fff;
+}
+
+
+.container .in {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--var-font);
+    direction: rtl;
+}
+
+.container .in p {
+    color: #999;
+    font-weight: bold;
+}
+
+.container .in input {
+    height: 55px;
+    border: none;
+    outline: none;
+    padding: 7px 14px;
+    background-color: #00000030;
+    color: #fff;
+}
+
+.done-btn {
+    width: 100%;
+    height: 65px;
+    border: none;
+    outline: none;
+    font-family: var(--var-font);
+    background-color: #2C81D6;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+}
