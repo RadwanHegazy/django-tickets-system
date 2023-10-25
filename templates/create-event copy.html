@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/create-event.css">
+</head>
+<body>
+    
+    <div class="up">
+        <h1>انشاء حدث</h1>
+    </div>
+
+    <div class="content">
+
+        
+        <div class="container">
+
+            <div class="images">
+                <button id="imgBtn">اضف صورة</button>
+                <input type="file" hidden id="imgFile">
+                <div class="img-inputs"></div>
+                <div class="img-cont">
+                </div>
+            </div>
+        
+            <div class="in">
+                <p>اسم الحدث</p>
+                <input type="text" name="event_name">
+            </div>
+
+            
+            <div class="in">
+                <p>تاريخ بدأ الحدث</p>
+                <input type="date" name="event_name">
+            </div>
+
+            <button class="done-btn">
+                انشاء الحدث
+            </button>
+
+        </div>
+        
+    
+
+    </div>
+
+
+    <script>
+
+
+        var imgBtn = document.getElementById('imgBtn');
+        var imgFile = document.getElementById('imgFile');
+        var add_img_to = document.querySelector('.images .img-cont');
+        var all_imgs = document.querySelectorAll('.img-cont img');
+        var img_inputs = document.querySelector('.img-inputs')
+
+        imgBtn.addEventListener('click',()=>{
+            imgFile.click()
+        })
+
+        imgFile.addEventListener('change',(e)=>{
+            var src = URL.createObjectURL(e.target.files[0]);
+            var img = document.createElement('img');
+            img.setAttribute('src',src)
+
+            var input = document.createElement('input');
+            input.setAttribute('type','file')
+            input.setAttribute('name','img')
+            input.setAttribute('hidden','')
+            input.filename = e.target.files[0]
+
+            
+            
+            img_inputs.appendChild(input)
+            add_img_to.appendChild(img);
+
+        })
+
+    </script>
+
+</body>
+</html>

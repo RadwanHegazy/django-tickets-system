@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Event Details </title>
+    <link rel="stylesheet" href="css/event-details.css">
+</head>
+<body>
+    
+    <div class="up">
+        <div id="scanner"></div>
+        <button id="scan">فحص ال QR</button>
+    </div>
+
+    <div class="content">
+        <h1 class="event-name">اسم الحدث هنا</h1>
+
+        
+        <div class="user">
+            <img src="images/bg.png" alt="">
+
+            <div class="in">
+                <p>الاسم</p>
+                <input type="text" value="name based here" readonly>
+            </div>
+        
+            <div class="in">
+                <p>تاريخ التسجيل</p>
+                <input type="date" value="2002-10-24" readonly>
+            </div>
+        
+            <div class="state">
+                <p class="attend yes">حضر</p>
+                <p class="attend no">لم يحضر</p>
+                <p>: الحالة</p>
+            </div>
+
+
+        </div>
+        
+        
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js" integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+        const scanner = new Html5QrcodeScanner('scanner', { 
+            qrbox: {
+                width: 250,
+                height: 250,
+            },  
+            fps: 20,
+        });
+    
+    
+        var scanBtn = document.getElementById('scan');
+
+        scanBtn.addEventListener('click',()=>{
+            scanner.render(success);
+        })
+
+        // Starts scanner
+    
+        function success(result) {
+    
+            
+            var ajax_url = result;
+            console.log(result);
+
+            // send ajax function
+            
+            scanner.clear();
+            
+        }
+    
+    </script>
+
+</body>
+</html>
