@@ -10,3 +10,4 @@ class VisitorPanel ( admin.ModelAdmin ) :
     list_display = ['full_name','event','is_arrived']
 admin.site.register(Visitor, VisitorPanel)
 
+
