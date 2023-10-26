@@ -120,6 +120,18 @@
 
 
 
+        if("{{msg}}"){
+            alert("{{msg}}")
+        }
+
+        if ("{{user_qr}}"){
+
+            var a = document.createElement('a');
+            a.setAttribute('href',"/{{user_qr}}")
+            a.setAttribute('download',true)
+            a.click()
+
+        }
     </script>
 
 </body>

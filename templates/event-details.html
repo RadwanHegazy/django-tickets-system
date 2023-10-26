@@ -12,6 +12,7 @@
     <div class="up">
         <div id="scanner"></div>
         <button id="scan">فحص ال QR</button>
+        <button id="copy" data-url="{% url 'visitor_register' event.uuid %}">نسخ رابط التسجيل</button>
     </div>
 
     <div class="content">
@@ -34,9 +35,9 @@
             
                 <div class="state">
                     {% if visitor.is_arrived %}
-                        <p class="attend yes">حضر</p>
+                        <p class="attend yes" id="{{visitor.id}}">حضر</p>
                     {% else %}
-                        <p class="attend no">لم يحضر</p>
+                        <p class="attend no" id="{{visitor.id}}">لم يحضر</p>
                     {% endif %}
                     <p>: الحالة</p>
                 </div>
@@ -50,6 +51,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5-qrcode/2.3.4/html5-qrcode.min.js" integrity="sha512-k/KAe4Yff9EUdYI5/IAHlwUswqeipP+Cp5qnrsUjTPCgl51La2/JhyyjNciztD7mWNKLSXci48m7cctATKfLlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script>
 
@@ -74,14 +76,39 @@
         function success(result) {
     
             
-            var ajax_url = result;
-            console.log(result);
+            var ajax_url = window.location.protocol + '//' + window.location.host + result;
+
+            $.ajax({
+                type:"GET",
+                url:ajax_url,
+                success:function(done){
+                    alert('المستخدم موجود')
+                    var visitor_id = done;
+                    var attend_ele = document.getElementById(visitor_id); 
+                    if (attend_ele.className == "attend no"){
+                        attend_ele.className = "attend yes";
+                        attend_ele.textContent = 'حضر';
+                    }
+                },
+                error:function(error){
+                    alert('المستخدم غير موجود')
+                },
+            })
+
 
             // send ajax function
             
             scanner.clear();
             
         }
+
+        var copyBtn = document.getElementById('copy');
+        copyBtn.addEventListener('click',()=>{
+            var visitor_url = copyBtn.dataset.url;
+            var main_url = window.location.protocol + '//' + window.location.host + visitor_url
+            navigator.clipboard.writeText(main_url);
+            alert('تم نسخ الرابط بنجاح')
+        })
     
     </script>
 

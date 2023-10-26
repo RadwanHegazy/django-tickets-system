@@ -33,7 +33,8 @@ body .up {
 
 .up button {
     direction: rtl;
-    width: 100px;
+    width: auto;
+    padding: 6px 12px;
     height: 45px;
     border-radius: 100px;
     border: none;

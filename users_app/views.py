@@ -2,6 +2,11 @@ from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from ticket_app.models import Event, Event_Image, Visitor
 from users_app.models import User
 from django.contrib.auth.views import auth_login
+import pyqrcode 
+import png 
+from pyqrcode import QRCode 
+from django.contrib.auth.decorators import login_required
+from uuid import uuid4
 
 def login (request) :
 
@@ -76,8 +81,30 @@ def visitor_register (request, eventuuid) :
         
         visitor.save()
 
+        # String which represents the QR code 
+        text = redirect('verify_visitor',event.uuid,visitor.uuid).url
+        
+
+        url = pyqrcode.create(text) 
+        
+        saved_path = f'media/verified-qr/{uuid4()}.png'
+        url.png(saved_path, scale = 6)
+
+
+        context['user_qr'] = saved_path
         context['msg'] = 'تم تسجيلك بنجاح'
 
-        return redirect('visitor_register',eventuuid)
 
     return render(request,'visitor-register.html',context)
+
+
+
+@login_required
+def verify_visitor (request, eventuuid, visitoruuid) : 
+    event = get_object_or_404(Event,uuid=eventuuid)
+    visitor = get_object_or_404(Visitor,uuid=visitoruuid)
+
+    visitor.is_arrived = True
+    visitor.save()
+
+    return HttpResponse(visitor.id)
